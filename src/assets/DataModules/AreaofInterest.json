@@ -1,0 +1,18 @@
+[
+  {
+      "id": "1",
+      "displayValue": "designer"
+  },
+  {
+      "id": "2",
+      "displayValue": "developer"
+  },
+  {
+      "id": "3",
+      "displayValue": "manager"
+  },
+  {
+      "id": "4",
+      "displayValue": "sales"
+  }
+]

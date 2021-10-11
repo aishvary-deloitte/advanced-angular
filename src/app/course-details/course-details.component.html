@@ -1,0 +1,69 @@
+<div id="main-content-header">
+  <div class="main-content-header-content">
+      <span>Discover Latest Courses on</span>
+      <span> React </span>
+  </div>
+  <div  class="main-content-header-img"><img src="/assets/Mask Group 1.png" alt="" srcset=""></div>
+</div>
+<div id= "main-content-top">
+  <strong>Courses in Cart</strong>
+</div>
+
+<div class="course-banner">
+  <div class="course-banner-details">
+    <div class="details-wrapper">
+      <div class="big-title">{{getCurrentCourse().title}}</div>
+      <div class="small-title">{{getCurrentCourse().title}}</div>
+      <div class="creator">{{getCurrentCourse().course_creator}}</div>
+      <div class="react-buttons">
+        <div class="react-button">React</div>
+
+        <div class="react-button">React</div>
+
+        <div class="react-button">React</div>
+      </div>
+    </div>
+    <div class="options">
+      <div class="video">
+        <iframe width="674" height="332"
+        src="https://www.youtube.com/embed/tgbNymZ7vqY?playlist=tgbNymZ7vqY&loop=1">
+        </iframe>
+      </div>
+
+      <div class="course-options">
+        <div class="discounted-price">Rs.{{getCurrentCourse().discounted_price}}/-</div>
+
+        <div class="original-price">Rs {{getCurrentCourse().price}}/-</div>
+
+        <div class="discount-time">
+          <div class="clock">
+            <img src="/assets/clock.svg" alt="">
+          </div>
+          <div class="discount-time-text">
+            <span class="hours">8 hours</span>
+            left for this price
+          </div>
+        </div>
+
+        <div class="course-buttons">
+          <div class="add-to-cart" (click)="AddToCart(getCurrentCourse().id)">ADD TO CART</div>
+          <div class="add-to-wishlist"  (click)="AddToWishlist(getCurrentCourse().id)"> ADD TO WISHLIST <img src="/assets/wish-list.svg" alt=""></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="course-details-section">
+  <div class="course-details-text">Course Details</div>
+  <div class="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+  <div class="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+  <div class="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+  <div class="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+  <div class="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+
+</div>
+
+<footer>
+</footer>

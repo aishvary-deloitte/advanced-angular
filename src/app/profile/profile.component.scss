@@ -1,0 +1,215 @@
+@media screen and (min-resolution: 120dpi) {
+  body {transform: scale(0.8);transform-origin:top left;width: 125%;height: 125%;}
+}
+
+
+@mixin flex-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+@function convert-rem($length) {
+  $result: $length / 16;
+  @return $result * 1rem;
+}
+
+$theme-color_1: #FF6738;
+$common-box-shadow: 0 convert-rem(3) convert-rem(6) #00000029;
+
+#main-content-header {
+  @include flex-row;
+  width: 82.82%;
+  margin: auto;
+  background-color: black;
+  color: white;
+  margin-top: convert-rem(16);
+  justify-content: space-between;
+  align-items: center;
+
+  .main-content-header-content {
+    margin-left: convert-rem(27);
+    width: 33%;
+    font: normal normal 600 convert-rem(20)/convert-rem(24) Montserrat;
+    display: flex;
+    flex-direction: column;
+  }
+}
+main {
+  // display: flex;
+  // justify-content: center;
+  width: 82.82%;
+  margin: auto;
+  margin-bottom: 20px;
+  .main-content {
+    margin-top: convert-rem(20);
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 5.2fr;
+    grid-column-gap: convert-rem(20);
+
+    .profile-icon {
+      height: convert-rem(209);
+      width: convert-rem(260);
+      padding: convert-rem(36) convert-rem(55) 0 convert-rem(55);
+      display: flex;
+      justify-content: center;
+      box-shadow: $common-box-shadow;
+
+      img {
+
+        margin-top: auto;
+        height: convert-rem(172);
+        width: convert-rem(149);
+      }
+
+    }
+
+    .display-form {
+      padding: convert-rem(22);
+      box-shadow: $common-box-shadow;
+      font-size: .75rem;
+
+      .profile-name {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+        p {
+          margin-bottom: 0.4rem;
+        }
+
+        .name-entry {
+          input {
+            width: 100%;
+            height: convert-rem(40);
+          }
+        }
+
+        .last-name-entry {
+          margin-right: convert-rem(181);
+          input {
+            width: 100%;
+            height: convert-rem(40);
+          }
+        }
+      }
+
+      .about-us {
+        input {
+          height: convert-rem(163);
+          width: 55%;
+        }
+      }
+
+      .area-of-interest {
+
+        margin-top: convert-rem(18);
+        .checkbox {
+          display: flex;
+          align-items: center;
+          margin-top: convert-rem(18);
+          font-size: .875rem;
+
+          .checkbox-box {
+            display: none;
+            height: convert-rem(24);
+            width: convert-rem(24);
+            border-radius: convert-rem(6);
+            background-color: #e0e5f8;
+            border: 0;
+          }
+
+          .checkbox-box:after {
+            content: "";
+            position: absolute;
+            display: none;
+          }
+
+          .checkbox input:checked ~ .checkbox-box {
+            background-color: blue;
+          }
+
+        }
+      }
+      .student-professional {
+        margin-top: convert-rem(18);
+          .radio {
+            margin-top: convert-rem(18);
+          }
+      }
+
+      #professional {
+        display: block;
+        margin-top: convert-rem(18);
+
+        margin-bottom: convert-rem(18);
+
+        box-shadow: $common-box-shadow;
+        padding: 1rem;
+
+          .experience{
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            width:40%;
+            // flex-basis: rem;
+            margin-bottom: convert-rem(18);
+            .radio {
+              display: flex;
+              align-items: center;
+              input{
+              }
+            }
+          }
+
+          .role {
+            .name-entry {
+              input {
+                width: convert-rem(300);
+                height: convert-rem(40);
+              }
+            }
+
+          }
+      }
+      .save {
+        display: flex;
+        justify-content: flex-end;
+        .save-button {
+          display: flex;
+          color: white;
+          justify-content: center;
+          align-items: center;
+          width: convert-rem(145);
+          height: convert-rem(40);
+          background-color: $theme-color_1;
+          button {
+            width: 100%;
+            height: 100%;
+            background-color: $theme-color_1;
+            border: 0;
+            color: white;
+            // cursor: pointer;
+          }
+        }
+      }
+
+
+    }
+
+
+  }
+
+}
+.mobile-save {
+  display: none;
+}
+
+.mobile-profile-icon {
+  display: none;
+}

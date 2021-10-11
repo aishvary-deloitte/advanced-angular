@@ -1,0 +1,219 @@
+@function convert-rem($length) {
+  $result: $length / 16;
+  @return $result * 1rem;
+}
+
+@mixin flex-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+
+$theme-color_1: #FF6738;
+$theme-color_2: #e25b32;
+$common-box-shadow: 0 convert-rem(3) convert-rem(6) #00000029;
+
+
+#main-content-header {
+  @include flex-row;
+  width: 82.82%;
+  margin: auto;
+  background-color: black;
+  color: white;
+  margin-top: convert-rem(16);
+  justify-content: space-between;
+  align-items: center;
+  // border-radius: 00.25rem;
+
+  .main-content-header-content {
+    margin-left: convert-rem(27);
+    width: 33%;
+    font: normal normal 600 convert-rem(20)/convert-rem(24) Montserrat;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+
+
+#main-content-top {
+  margin: auto;
+  width: 82.82%;
+  margin-top: convert-rem(32);
+  margin-bottom: convert-rem(20);
+  }
+
+
+.course-banner {
+  width: 100%;
+  background-color: #0F1317;
+  display: flex;
+  justify-content: center;
+  .course-banner-details {
+
+    display: flex;
+    // flex-direction: column;
+    width: 82.82%;
+    margin-top: convert-rem(46);
+    position: relative;
+    justify-content: space-between;
+
+    .details-wrapper {
+      width: 50%;
+
+      display: flex;
+      flex-direction: column;
+
+      .big-title {
+        color: #FFFFFF;
+        font-size: convert-rem(24);
+        margin-bottom: convert-rem(16);
+      }
+      .small-title {
+        color: #FFFFFF;
+        font-size: convert-rem(18);
+        margin-bottom: convert-rem(38);
+      }
+
+      .creator {
+        color: #FF9271;
+        font-size: convert-rem(16);
+        margin-bottom: convert-rem(22);
+      }
+
+      .react-buttons {
+        display: flex;
+        margin-bottom: convert-rem(44);
+        .react-button {
+          display: flex;
+          width: convert-rem(78);
+          height: convert-rem(21);
+          margin-right: convert-rem(12);
+          background-color: #EDEDED;
+          justify-content: center;
+          align-items: center;
+          font-size: convert-rem(12);
+        }
+      }
+    }
+
+    .options {
+      position: absolute;
+      // top: 100px;
+      width: 41%;
+      left: 58%;
+      margin-left: auto;
+      .video {
+        margin-bottom: convert-rem(16);
+        iframe {
+          width: 100%;
+        }
+      }
+      .course-options{
+        border: 1px solid #E0E0E0;
+        @include flex-column();
+        padding-left: convert-rem(20);
+        padding-top: convert-rem(22);
+        padding-bottom: convert-rem(48);
+        padding-right: convert-rem(20);
+
+        .discounted-price {
+          color: #080808;
+          font-weight: bold;
+          font-size: convert-rem(30);
+          // margin-top: convert-rem(22);
+        }
+
+        .original-price {
+          font-size: convert-rem(20);
+
+          margin-top: convert-rem(6);
+        }
+
+        .discount-time {
+          display: flex;
+          color: #D13030;
+          margin-top: convert-rem(19);
+          font-size: convert-rem(20);
+
+          .clock {
+            margin-right: convert-rem(16);
+          }
+          .hours {
+            font-weight: bold;
+          }
+        }
+
+        .course-buttons {
+          @include flex-row();
+          margin-top: convert-rem(46);
+          align-items: center;
+          font-size: convert-rem(16);
+          justify-content: space-between;
+
+          .add-to-cart {
+
+            cursor: pointer;
+            @include flex-row();
+            justify-content: center;
+            align-items: center;
+            color: white;
+            background-color: #FF6738;
+            width: 45%;
+            height: convert-rem(51);
+          }
+
+          .add-to-wishlist {
+            cursor: pointer;
+            @include flex-row();
+            justify-content: center;
+            align-items: center;
+            color: #FF6738;
+            border: 1px solid #FF6738;
+            width: 45%;
+            height: convert-rem(51);
+            img {
+              margin-left: convert-rem(20);
+            }
+
+          }
+        }
+      }
+    }
+
+  }
+}
+
+
+.course-details-section {
+  border: 1px solid #E0E0E0;
+  width: 46%;
+  margin-left: 8.5%;
+  margin-top: convert-rem(16);
+  padding: convert-rem(21) convert-rem(12) convert-rem(30) convert-rem(12);
+
+  .course-details-text {
+    font-family: Montserrat Semibold;
+    color: #4E4E4E;
+    font-size: convert-rem(18);
+    margin-bottom: convert-rem(14);
+  }
+
+  .lorem {
+    color: #4E4E4E;
+    font-size: convert-rem(18);
+    margin-bottom: convert-rem(14);
+  }
+}
+footer {
+  margin-top: convert-rem(39);
+  background-color: #f5f5f5;
+  height: convert-rem(60);
+}

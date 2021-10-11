@@ -1,0 +1,108 @@
+<div id="main-content-header">
+  <div class="main-content-header-content">
+      <span>Discover Latest Courses on</span>
+      <span> React </span>
+  </div>
+  <div  class="main-content-header-img"><img src="/assets/Mask Group 1.png" alt="" srcset=""></div>
+</div>
+
+<main>
+
+
+  <div id= "main-content-top">
+      <div id="main-content-top-left">
+          <div id="all-courses"><strong>My Wishlist</strong></div>
+          <div class="margin-empty-space"></div>
+          <div id="sort-by">
+              <img src="/assets/sort-by.svg" alt="">
+          </div>
+      </div>
+
+      <div id="main-content-top-right">
+          <input id="search-bar" type="text" placeholder="Search">
+          <div id="search-button">
+              <img src="/assets/Search.svg" alt="">
+          </div>
+      </div>
+
+  </div>
+
+  <div id= "main-content-middle">
+      <div id="main-content">
+        <div class="course-main-content" *ngFor = "let course of getWishlistData()">
+          <div class="course-img">
+              <img src="/assets/course-generic.png" alt="" srcset="">
+          </div>
+
+          <div class="title-reactions">
+              <div class="course-title">
+                {{course.title}}
+              </div>
+              <div class="react-buttons">
+                  <div class="react-button">React</div>
+                  <div class="react-button">React</div>
+              </div>
+          </div>
+
+          <div class="course-creator">{{course.course_creator}}</div>
+
+          <div class="course-options">
+              <div class="discount-price"><strong>Rs. {{course.discounted_price}}</strong></div>
+              <div class="original-price" [ngStyle] = "calculateStyle(course)">{{getOriginialPrice(course)}}</div>
+              <div class="add-to-cart" (click)="AddToCart(course.id)">Add to cart</div>
+              <div class="trash-image" (click)="RemoveFromWishlist(course.id)"><img src="/assets/trash-icon.png"></div>
+              <div class="arrow-to-course" routerLink="/course-details" (click)="CurrentCourseUpdate(course.id)"><img src="/assets/arrow.svg" alt="" srcset=""></div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <aside>
+
+          <div class="cart">
+              <div class="cart-text">
+                  YOUR CART DETAILS
+              </div>
+
+              <div class="cart-course" *ngFor = "let cart_course of getCartData()">
+                  <div class="cart-course-details">
+                      <div class="cart-course-img">
+                          <img src="/assets/course-generic.png" alt="" srcset="">
+                      </div>
+                      <div class="course-title">
+                          {{cart_course.title}}
+                      </div>
+                  </div>
+
+                  <div class="discount-price-cart">
+                      <strong>Rs. {{cart_course.discounted_price}}</strong>
+                  </div>
+              </div>
+
+              <!-- <div class="cart-empty-space"></div> -->
+
+              <div class="cart-checkout">
+                  <div class="cart-value-section">
+                      <div class="checkout text">Total Cart Value</div>
+                      <div class="cart-value"><strong>Rs. {{getTotalCartValue()}}/-</strong></div>
+                  </div>
+                  <div class="checkout-button" routerLink="/cart">
+                      <strong>GO TO CHECKOUT</strong>
+                  </div>
+              </div>
+          </div>
+      </aside>
+  </div>
+
+
+  <!-- <div class="page-change">
+      <img src="/assets/page-transition-arrow-left.svg" alt="">
+      <p>1</p>
+      <p>2</p>
+      <img src="/assets/page-transition-arrow-right.svg" alt="">
+  </div> -->
+
+</main>
+<!-- <footer>
+</footer> -->

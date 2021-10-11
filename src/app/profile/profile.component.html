@@ -1,0 +1,114 @@
+<div id="main-content-header">
+  <div class="main-content-header-content">My Profile </div>
+  <div class="margin-empty-space"></div>
+  <div  class="main-content-header-img"><img src="/assets/Mask Group 1.png" alt="" srcset=""></div>
+  </div>
+
+  <main>
+  <div class="main-content">
+      <div class="profile-icon">
+         <img src="/assets/user-icon.png" alt="">
+      </div>
+
+      <div class="mobile-profile-icon">
+          <img src="/assets/Profile@3x.png" alt="">
+      </div>
+
+      <div class="display-form">
+        <form [formGroup]= "MyProfileForm"  (ngSubmit)="onSubmit()">
+          <div class="profile-name">
+              <div class="name-entry">
+                  <p>Display Name</p>
+                  <input type="text" name="" placeholder="Some placeholder text" formControlName="displayName">
+                  <span *ngIf = "!MyProfileForm.get('displayName').valid &&  MyProfileForm.get('displayName').touched">Please enter Display Name </span>
+              </div>
+
+              <div class="name-entry">
+                  <p>First Name</p>
+                  <input type="text" name="" placeholder="Some placeholder text" formControlName= "firstName">
+
+                  <span *ngIf = "!MyProfileForm.get('firstName').valid &&  MyProfileForm.get('firstName').touched">Please enter First Name </span>
+              </div>
+
+              <div class="last-name-entry">
+                  <p>Last Name</p>
+                  <input type="text" name="" placeholder="Some placeholder text" formControlName = "lastName">
+                  <span *ngIf = "!MyProfileForm.get('lastName').valid &&  MyProfileForm.get('lastName').touched">Please enter Last Name </span>
+              </div>
+          </div>
+
+          <div class="about-us">
+              <p>About Yourself</p>
+              <input type="text" formControlName = "aboutYourself">
+              <span *ngIf = "!MyProfileForm.get('aboutYourself').valid &&  MyProfileForm.get('aboutYourself').touched">Please enter your details </span>
+
+          </div>
+
+          <div class="area-of-interest" formGroupName = "AreaofInterests">
+              Your area of interst
+              <div class="checkbox" *ngFor = "let aoi of AreaofInterest">
+                  <input type="checkbox" name="aoi" [formControlName] = "aoi.displayValue">
+                  <span class="checkbox-box"></span>
+                  {{aoi.displayValue}}
+              </div>
+          </div>
+
+          <div class="student-professional">
+              Are you a Student or Professional?
+              <div class="radio">
+                  <input type="radio" name="s-p" value="Student" (change)="SorP($event)" checked=true> Student
+              </div>
+
+              <div class="radio" >
+                  <input type="radio" name="s-p" (change)="SorP($event)" value="Professional" id="prof-radio"> Professional
+              </div>
+          </div>
+
+          <div id="professional" *ngIf = "selectedRadio==='Professional'">
+
+              <p>How much experience do you have?</p>
+              <div class="experience">
+                  <div class="radio" *ngFor = "let exp of Experience">
+                      <input type="radio" [value]="exp.id" formControlName = "experience"> {{exp.displayValue}}
+                  </div>
+              </div>
+
+              <p>What is your expertise</p>
+              <div class="experience">
+                <div class="radio" *ngFor = "let exp of Expertise">
+                  <input type="radio" [value]="exp.id" formControlName = "Expertise"> {{exp.displayValue}}
+                </div>
+              </div>
+
+              <div class="role">
+                  <div class="name-entry">
+                      <p>Mention your role</p>
+                      <input type="text" name="" id="" placeholder="Some placeholder text" formControlName = "Role">
+                  </div>
+              </div>
+          </div>
+          <div class="save">
+              <div class="save-button" >
+                  <button type="submit"
+                  [disabled] ="!MyProfileForm.get('displayName').valid || !MyProfileForm.get('firstName').valid || !MyProfileForm.get('lastName').valid ||  !MyProfileForm.get('aboutYourself').valid"
+                  >SAVE</button>
+              </div>
+          </div>
+        </form>
+      </div>
+
+
+  </div>
+
+
+  </main>
+
+  <div class="mobile-save">
+  <div class="save-button">
+      SAVE
+  </div>
+  </div>
+
+
+
+

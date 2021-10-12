@@ -3,10 +3,10 @@ import { CourseService } from '../course.service';
 // import { HttpClient } from "@angular/common/http";
 import { Validators ,FormGroup, FormControl } from '@angular/forms';
 import { Subject, Subscription } from 'rxjs';
-import { UserDetailsInterface } from '../Interfaces/user_details_interface';
-import { AreaofInterestInterface } from '../Interfaces/area_of_interest_interface';
-import { ExperienceInterface } from '../Interfaces/experience_interface';
-import { ExpertiseInterface } from '../Interfaces/ExpertiseInterface';
+import { UserDetailsInterface } from '../interfaces/user_details_interface';
+import { AreaofInterestInterface } from '../interfaces/area_of_interest_interface';
+import { ExperienceInterface } from '../interfaces/experience_interface';
+import { ExpertiseInterface } from '../interfaces/ExpertiseInterface';
 
 @Component({
   selector: 'app-profile',

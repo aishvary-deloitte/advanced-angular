@@ -1,27 +1,23 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { CartComponent } from './cart/cart.component';
-import { ProfileComponent } from './profile/profile.component';
-import { WishlistComponent } from './wishlist/wishlist.component';
-import { CourseDetailsComponent } from './course-details/course-details.component';
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes : Routes = [
-  {path: '', component: DashboardComponent},
+  {
+    path: '',
+    loadChildren:()=>import('src/app/course/course.module').then(m => m.CourseModule)
+  },
+  {
+    path: 'profile',
+    loadChildren:()=>import('src/app/profile/profile.module').then(m => m.ProfileModule)
+  },
 
-  {path: 'cart', component: CartComponent , pathMatch: 'full' },
-
-  {path: 'profile', component: ProfileComponent, pathMatch: 'full' },
-
-  {path: 'wishlist', component: WishlistComponent, pathMatch: 'full' },
-
-  {path: 'course-details', component: CourseDetailsComponent, pathMatch: 'full' },
 ];
 
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+  ],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

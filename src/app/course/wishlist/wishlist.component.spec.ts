@@ -5,31 +5,32 @@ import { Store, StoreModule } from '@ngrx/store';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { CourseService } from 'src/app/course.service';
 import { CourseInterface } from 'src/app/course_interface';
-import { cartListReducer } from '../course/cart/store/cart.reducer';
-import { wishlistReducer } from '../course/wishlist/store/wishlist.reducer';
+import { cartListReducer } from '../cart/store/cart.reducer';
+import { wishlistReducer } from '../wishlist/store/wishlist.reducer';
 
-import { ProfileComponent } from './profile.component';
+import { WishlistComponent } from './wishlist.component';
 
-describe('ProfileComponent', () => {
-  let component: ProfileComponent;
-  let fixture: ComponentFixture<ProfileComponent>;
+describe('WishlistComponent', () => {
+  let component: WishlistComponent;
+  let fixture: ComponentFixture<WishlistComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ProfileComponent ],
-      imports: [HttpClientModule, MatDialogModule, StoreModule.forRoot({cartList:cartListReducer, wishlistItems: wishlistReducer})],
+      declarations: [ WishlistComponent ],
+
+      imports: [HttpClientModule, MatDialogModule, StoreModule.forRoot({cartList:cartListReducer, wishlistItems: wishlistReducer}), NgxPaginationModule],
       providers: [CourseService]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ProfileComponent);
+    fixture = TestBed.createComponent(WishlistComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  // it('should create', () => {
-  //   expect(component).toBeTruthy();
-  // });
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
 });

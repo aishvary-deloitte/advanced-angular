@@ -12,7 +12,7 @@
       <div class="cart-content">
           <div id="course-in-cart"  >
 
-            <div class="course-main-content" *ngFor = "let cart_course of getCartData()">
+            <div class="course-main-content" *ngFor = "let cart_course of cartItems">
               <div class="course-details">
                 <div class="course-img">
                     <img src="/assets/course-generic.png" alt="" srcset="">
@@ -30,12 +30,12 @@
 
 
               <div class="course-options">
-                  <div class="add-to-wishlist" (click)="MoveToWishlist(cart_course.id)">
+                  <div class="add-to-wishlist" (click)="MoveToWishlist(cart_course)">
                     Move to Wishlist
 
                   </div>
-                  <div class="discount-price"><strong>{{cart_course.discounted_price}}</strong></div>
-                  <div class="trash-image" (click)="RemoveFromCart(cart_course.id)"><img src="/assets/trash-icon.png"></div>
+                  <div class="discount-price"><strong>{{getDiscountedPrice(cart_course)}}</strong></div>
+                  <div class="trash-image" (click)="RemoveFromCart(cart_course)"><img src="/assets/trash-icon.png"></div>
               </div>
             </div>
 
@@ -44,7 +44,7 @@
           <div class="recommended-outer">
               <div class="recommended-course-text">Recommended Courses</div>
               <div id="recommended">
-                <div class="course-main-content" *ngFor = "let course of getWishlistData()">
+                <div class="course-main-content" *ngFor = "let course of wishlist">
                   <div class="course-img">
                     <img src="/assets/course-generic.png" alt="" srcset="">
                 </div>
@@ -62,15 +62,15 @@
                 <div class="course-creator">{{course.course_creator}}</div>
 
                 <div class="course-options">
-                    <div class="wishlist-star" *ngIf="!course.wishlist" (click)= "AddToWishlist(course.id)">
+                    <div class="wishlist-star" *ngIf="wishlist.indexOf(course)==-1" (click)= "AddToWishlist(course)">
                         <img src="/assets/Path 28-1.svg" alt="" srcset="">
                     </div>
-                    <div class="wishlisted-star" *ngIf="course.wishlist" (click)= "RemoveFromWishlist(course.id)">
+                    <div class="wishlisted-star" *ngIf="wishlist.indexOf(course)>-1" (click)= "RemoveFromWishlist(course)">
                       <img src="/assets/wishlisted.svg" alt="" srcset="">
                   </div>
-                    <div class="discount-price"><strong>Rs. {{course.discounted_price}}</strong></div>
+                    <div class="discount-price"><strong>Rs. {{getDiscountedPrice(course)}}</strong></div>
                     <div class="original-price" [ngStyle] = "calculateStyle(course)">{{getOriginialPrice(course)}}</div>
-                    <div class="add-to-cart" (click)="AddToCart(course.id)">Add to cart</div>
+                    <div class="add-to-cart" (click)="AddToCart(course)">Add to cart</div>
                     <div class="arrow-to-course" routerLink="/course-details" (click)="CurrentCourseUpdate(course.id)"><img src="/assets/arrow.svg" alt="" srcset=""></div>
                 </div>
 
@@ -79,8 +79,6 @@
           </div>
       </div>
 
-
-
       <aside>
           <div class="cart">
               <div class="cart-text">
@@ -88,9 +86,6 @@
 
                   <div class="checkout-amount"><strong> Rs. {{getTotalCartValue()}}/-</strong></div>
               </div>
-
-
-
 
               <div class="checkout-button" (click)= "Checkout()">
                       CHECKOUT

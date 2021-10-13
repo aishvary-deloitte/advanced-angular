@@ -1,4 +1,4 @@
-<!-- <div class="wrapper"> -->
+
   <div id="main-content-header">
     <div class="main-content-header-content">
         <span>Discover Latest Courses on</span>
@@ -30,7 +30,7 @@
 
     <div id= "main-content-middle">
         <div id="main-content">
-          <div class="course-main-content" *ngFor = "let course of getData() | paginate: { itemsPerPage: 4, currentPage: p }">
+          <div class="course-main-content" *ngFor = "let course of courses | paginate: { itemsPerPage: 4, currentPage: p }">
             <div class="course-img">
                 <img src="/assets/course-generic.png" alt="" srcset="">
             </div>
@@ -48,18 +48,17 @@
             <div class="course-creator">{{course.course_creator}}</div>
 
             <div class="course-options">
-                <div class="wishlist-star" *ngIf="!course.wishlist" (click)= "AddToWishlist(course.id)">
+                <div class="wishlist-star" *ngIf="!inWishlist(course)" (click)= "AddToWishlist(course)">
                     <img src="/assets/Path 28-1.svg" alt="" srcset="">
                 </div>
-                <div class="wishlisted-star" *ngIf="course.wishlist" (click)= "RemoveFromWishlist(course.id)">
+                <div class="wishlisted-star" *ngIf="inWishlist(course)" (click)= "RemoveFromWishlist(course)">
                   <img src="/assets/wishlisted.svg" alt="" srcset="">
               </div>
-                <div class="discount-price"><strong>Rs. {{course.discounted_price}}</strong></div>
+                <div class="discount-price"><strong>Rs. {{getDiscountedPrice(course)}}</strong></div>
                 <div class="original-price" [ngStyle] = "calculateStyle(course)">{{getOriginialPrice(course)}}</div>
-                <div class="add-to-cart" (click)="AddToCart(course.id)" >Add to cart</div>
+                <div class="add-to-cart" (click)="AddToCart(course)" >Add to cart</div>
                 <div class="arrow-to-course"  routerLink="/course-details" (click)="CurrentCourseUpdate(course.id)"><img src="/assets/arrow.svg" alt="" srcset=""></div>
             </div>
-
           </div>
 
         </div>
@@ -71,7 +70,7 @@
                     YOUR CART DETAILS
                 </div>
 
-                <div class="cart-course" *ngFor = "let cart_course of getCartData()">
+                <div class="cart-course" *ngFor = "let cart_course of cartItems">
                     <div class="cart-course-details">
                         <div class="cart-course-img">
                             <img src="/assets/course-generic.png" alt="" srcset="">
@@ -82,7 +81,7 @@
                     </div>
 
                     <div class="discount-price-cart">
-                        <strong>Rs. {{cart_course.discounted_price}}</strong>
+                        <strong>Rs. {{getDiscountedPrice(cart_course)}}</strong>
                     </div>
                 </div>
 
@@ -102,14 +101,7 @@
     </div>
 
     <pagination-controls (pageChange)="p = $event"></pagination-controls>
-    <!-- <div class="page-change">
-        <img src="/assets/page-transition-arrow-left.svg" alt="">
-        <p>1</p>
-        <p>2</p>
-        <img src="/assets/page-transition-arrow-right.svg" alt="">
-    </div> -->
 
   </main>
   <footer>
   </footer>
-  <!-- </div> -->

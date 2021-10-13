@@ -17,9 +17,9 @@ export class ProfileComponent implements OnInit {
   MyProfileForm : FormGroup;
   // ExtractedUserDetails = new Subject<void>();
   UserDetails : UserDetailsInterface;
-  AreaofInterest :Array< AreaofInterestInterface>;
-  Experience : Array<ExperienceInterface>;
-  Expertise : Array<ExpertiseInterface>;
+  AreaofInterest :AreaofInterestInterface[];
+  Experience : ExperienceInterface[];
+  Expertise : ExpertiseInterface[];
 
   ProfileService : CourseService;
   us = [];
@@ -29,47 +29,36 @@ export class ProfileComponent implements OnInit {
 
   constructor(service : CourseService) {
     this.ProfileService = service;
-    // this.UserDetails = this.ProfileService.returnUserDetails();
-    // this.UserDetails.displayName = 'Saurabh';
-    // this.UserDetails.firstName = 'Saurabh';
-    // this.UserDetails.lastName = 'Sinha';
-    // this.UserDetails.aboutYourself = 'I am Iron Man';
-    // this.UserDetails.
 
   }
 
   ngOnInit(): void {
     this.ProfileService.extractedJsonUserData.subscribe(
-      (data:any) => {
+      (data:UserDetailsInterface) => {
 
       this.UserDetails = data;
       }
-
     );
 
 
     this.ProfileService.extractedJsonAoIData.subscribe (
-      (data:any) => {
+      (data:AreaofInterestInterface[]) => {
         this.AreaofInterest =data;
-        // console.log(this.AreaofInterest);
       }
     )
 
     this.ProfileService.extractedJsonExperienceData.subscribe (
-      (data:any) => {
+      (data:ExperienceInterface[]) => {
         this.Experience =data;
-        // console.log(this.Experience);
+
       }
     )
 
     this.ProfileService.extractedJsonExpertiseData.subscribe (
-      (data:any) => {
-        this.Expertise =data;
-        // console.log(this.Expertise);
+      (data:ExpertiseInterface[]) => {
+        this.Expertise = data;
       }
     )
-
-
 
     this.MyProfileForm = new FormGroup({
       'displayName' : new FormControl(this.UserDetails.displayName, Validators.required),
@@ -111,20 +100,6 @@ export class ProfileComponent implements OnInit {
       this.selectedRadio = "Professional";
     }
   }
-
-
-  // selectedExperience () {
-  //   this.Experience.forEach(element => {
-  //       if (element.id === this.UserDetails.experience
-  //   });
-  // }
-  // returnAoIForm() {
-  //   var obj = {};
-  //   this.AreaofInterest.forEach(element => {
-  //     var x =element.id;
-  //     obj.x
-  //   });
-  // }
 
   onSubmit() {
     this.UserDetails.displayName = this.MyProfileForm.value.displayName;

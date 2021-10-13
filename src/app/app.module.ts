@@ -7,41 +7,37 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { WishlistComponent } from './wishlist/wishlist.component';
-import { CartComponent } from './cart/cart.component';
-import { ProfileComponent } from './profile/profile.component';
-import { CourseDetailsComponent } from './course-details/course-details.component';
 import { PopUpComponent } from './pop-up/pop-up.component';
 import { HttpClientModule } from '@angular/common/http';
-import { NgxPaginationModule } from 'ngx-pagination';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+import { StoreModule } from '@ngrx/store';
+import { CoreModule } from './core.module';
+import { ProfileModule } from './profile/profile.module';
+import { CourseModule } from './course/course.module';
 
 
 import { MatDialogModule } from '@angular/material/dialog';
+import { cartListReducer } from './course/cart/store/cart.reducer';
+import { wishlistReducer } from './course/wishlist/store/wishlist.reducer';
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    DashboardComponent,
-    WishlistComponent,
-    CartComponent,
-    ProfileComponent,
-    CourseDetailsComponent,
     PopUpComponent
   ],
   imports: [
+    CoreModule,
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     MatDialogModule,
-    NgxPaginationModule,
-    FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    StoreModule.forRoot({cartList:cartListReducer, wishlistItems: wishlistReducer}),
+    ProfileModule,
+    CourseModule
   ],
-  providers: [],
+  providers: [HttpClientModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

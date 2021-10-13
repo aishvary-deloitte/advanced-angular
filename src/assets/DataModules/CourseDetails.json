@@ -6,9 +6,7 @@
       "course_creator": "Joseph Marie",
       "tags": ["React","React"],
       "price": 850,
-      "discount": 10,
-      "cart": true,
-      "wishlist":false
+      "discount": 10
     },
     {
       "id": "2",
@@ -16,9 +14,7 @@
       "course_creator": "Joseph Marie",
       "tags": ["React","React"],
       "price": 700,
-      "discount": 0,
-      "cart": false,
-      "wishlist":false
+      "discount": 0
     },
     {
       "id": "3",
@@ -26,9 +22,7 @@
       "course_creator": "Joseph Marie",
       "tags": ["React","React"],
       "price": 850,
-      "discount": 20,
-      "cart": false,
-      "wishlist":true
+      "discount": 20
     },
     {
       "id": "4",
@@ -36,9 +30,7 @@
       "course_creator": "Joseph Marie",
       "tags": ["React","React"],
       "price": 850,
-      "discount": 10,
-      "cart": false,
-      "wishlist":false
+      "discount": 10
     },
     {
       "id": "5",
@@ -46,10 +38,7 @@
       "course_creator": "Aishvary Khandelwal",
       "tags": ["React","React"],
       "price": 850,
-      "discount": 20,
-      "cart": false,
-      "wishlist":false
+      "discount": 20
     }
-
   ]
 }

@@ -31,7 +31,7 @@
       </div>
 
       <div class="course-options">
-        <div class="discounted-price">Rs.{{getCurrentCourse().discounted_price}}/-</div>
+        <div class="discounted-price">Rs.{{getDiscountedPrice(getCurrentCourse())}}/-</div>
 
         <div class="original-price">Rs {{getCurrentCourse().price}}/-</div>
 
@@ -46,8 +46,8 @@
         </div>
 
         <div class="course-buttons">
-          <div class="add-to-cart" (click)="AddToCart(getCurrentCourse().id)">ADD TO CART</div>
-          <div class="add-to-wishlist"  (click)="AddToWishlist(getCurrentCourse().id)"> ADD TO WISHLIST <img src="/assets/wish-list.svg" alt=""></div>
+          <div class="add-to-cart" (click)="AddToCart(getCurrentCourse())">ADD TO CART</div>
+          <div class="add-to-wishlist"  (click)="AddToWishlist(getCurrentCourse())"> ADD TO WISHLIST <img src="/assets/wish-list.svg" alt=""></div>
         </div>
 
       </div>
